@@ -26,17 +26,27 @@ class DetailPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Imagen principal con efecto de overlay
             Stack(
               children: [
-                Image.network(
-                  imageUrl,
-                  height: 300,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return const Icon(Icons.broken_image, size: 300, color: Colors.grey);
-                  },
+                Container(
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.2),
+                        blurRadius: 10,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: Image.network(
+                    imageUrl,
+                    height: 300,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return const Icon(Icons.broken_image, size: 300, color: Colors.grey);
+                    },
+                  ),
                 ),
                 Positioned(
                   bottom: 20,
@@ -61,13 +71,11 @@ class DetailPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            // Contenido principal
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Fecha estilizada
                   Text(
                     "Fecha: $date",
                     style: const TextStyle(
@@ -76,14 +84,13 @@ class DetailPage extends StatelessWidget {
                       fontStyle: FontStyle.italic,
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
 
-                  // Descripción
                   Text(
                     explanation,
                     style: const TextStyle(
                       fontSize: 16,
-                      height: 1.5,
+                      height: 1.5, // Espaciado entre líneas
                       color: Colors.black87,
                     ),
                     textAlign: TextAlign.justify,
@@ -91,24 +98,26 @@ class DetailPage extends StatelessWidget {
                 ],
               ),
             ),
+            const SizedBox(height: 20),
 
-            // Botón "Guardar en Favoritos"
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: ElevatedButton.icon(
-                onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text("Añadido a Favoritos")),
-                  );
-                },
-                icon: const Icon(Icons.favorite),
-                label: const Text("Guardar en Favoritos"),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.redAccent,
-                  foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(vertical: 14),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
+              child: Center(
+                child: ElevatedButton.icon(
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text("Añadido a Favoritos")),
+                    );
+                  },
+                  icon: const Icon(Icons.favorite, size: 20),
+                  label: const Text("Guardar en Favoritos"),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.redAccent,
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 24),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
                   ),
                 ),
               ),

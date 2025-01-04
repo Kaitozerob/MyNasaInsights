@@ -76,6 +76,7 @@ flutter:
   assets:
     - assets/images/space.png
     - assets/images/u202223781.png
+    - assets/images/loading.gif
 
   # To add assets to your application, add an assets section, like this:
   # assets:

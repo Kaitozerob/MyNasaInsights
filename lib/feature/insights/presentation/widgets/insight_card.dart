@@ -19,7 +19,7 @@ class InsightCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap, // Acción al hacer clic en la tarjeta
+      onTap: onTap,
       child: Card(
         margin: const EdgeInsets.only(bottom: 16),
         shape: RoundedRectangleBorder(
@@ -29,7 +29,7 @@ class InsightCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Imagen con bordes redondeados en la parte superior
+
             ClipRRect(
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(15),
@@ -50,7 +50,7 @@ class InsightCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Título
+
                   Text(
                     title,
                     style: const TextStyle(
@@ -62,7 +62,7 @@ class InsightCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 8),
-                  // Descripción corta
+
                   Text(
                     description,
                     style: const TextStyle(
@@ -73,7 +73,7 @@ class InsightCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 8),
-                  // Fecha
+
                   Text(
                     date,
                     style: const TextStyle(
